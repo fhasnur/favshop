@@ -1,4 +1,6 @@
 import React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
 import Header from './components/Header';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
@@ -19,14 +21,17 @@ function App() {
   const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
   return (
-    <div className="container">
+    <React.Fragment>
+      <CssBaseline />
       <Header />
-      <main>
-        <ProductList products={products} />
-        <Cart cartItems={cartItems} totalPrice={totalPrice} />
-      </main>
-      <Footer />
-    </div>
+      <Container fixed>
+        <main>
+          <ProductList products={products} />
+          <Cart cartItems={cartItems} totalPrice={totalPrice} />
+        </main>
+        <Footer />
+      </Container>
+    </React.Fragment>
   );
 }
 
